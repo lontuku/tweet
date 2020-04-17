@@ -1,0 +1,6 @@
+<% @tweets.each do |t| %>
+<%= t.user.photo %>
+<%= t.content %>
+<%= link_to 'Retweet', retweet_tweet_path(t.id), data: {confirm: '¿Seguro que desea retweetear?', method: :post} %>
+<%= t.retweets %>
+<% end %>
