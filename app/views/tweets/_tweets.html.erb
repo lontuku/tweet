@@ -23,19 +23,20 @@
         <% else %>
          <p> <b> <%= t.retweets %></b> Retweets hasta ahora!</p>
         <% end %>
-        <%= link_to tweet_path(t) do %>
-          <small> Twiteado hace <%= time_ago_in_words(t.created_at) %> </small>
-        <% end %>
+       
         <% if user_signed_in? %>
           <% if current_user.likes.find_by(tweet_id: t.id) %>
-            <%= link_to 'No me gusta', tweet_like_path(t, current_user), method: :delete %>
+            <%= link_to 'Dislike', tweet_like_path(t, current_user), method: :delete, class: "btn btn-danger" %>
           <% else %>
-            <%= link_to 'Like', tweet_likes_path(t), method: :post %>
+            <%= link_to 'Like', tweet_likes_path(t), method: :post, class: "btn btn-danger" %>
           <% end %>
           <p> Cantidad de Likes: <%= t.likes.count %></p>
         <% else %>
           <%= link_to 'Like', tweet_likes_path(t), method: :post %>
           <p> Cantidad de Likes: <%= t.likes.count %></p>
+        <% end %>
+         <%= link_to tweet_path(t) do %>
+          <small> Twiteado hace <%= time_ago_in_words(t.created_at) %> </small>
         <% end %>
     </div>
     </div>
