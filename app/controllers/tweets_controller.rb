@@ -34,6 +34,11 @@ class TweetsController < ApplicationController
 
   end
 
+  def show
+    @tweet = Tweet.find(params[:id])
+    @user_likes = Like.all.where(tweet_id: @tweet).pluck('user_id')
+  end
+
   private
   def set_tweet
     @tweet = Tweet.find(params[:id])

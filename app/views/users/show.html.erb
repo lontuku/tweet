@@ -1,0 +1,19 @@
+<h1>Perfil de <%= @user %></h1>
+<p><%= image_tag(@user.photo, size: "100x100")%></p>
+<p>
+  <a><%= @user.tweets.count %> <%= (@user.tweets.count) == 1 ? 'Tweet' : 'Tweets'%>, </a>
+  <a><%= @user.likes.count %> <%= (@user.likes.count) == 1 ? 'Like' : 'Likes'%>, </a>
+  
+</p>
+
+<% if user_signed_in? %>
+  <%if @user != current_user %>
+      <%if @relaciones.where(user_id: current_user.id, follow_id: @user.id).exists? %>
+          <%= button_to 'No Seguir', user_follow_path(@user, @follows), method: :delete %>
+      <% else %>
+          <%= button_to 'Seguir', user_follows_path(@user), method: :user %>
+      <% end %>
+  <% end %>
+<% end %>
+<br>
+<%= link_to 'Back', tweets_path %>

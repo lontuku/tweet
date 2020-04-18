@@ -1,0 +1,4 @@
+<% @user_likes.each do |l| %>
+    <p><%= image_tag(User.find(l).photo, size: "80x80") %></p>
+<% end %>
+
