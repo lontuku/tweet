@@ -11,7 +11,7 @@
         
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">Tweet</h5> 
+        <h5 class="card-title">Tweet por <%=t.user.name %></h5> 
         <p class="card-text"> <%= t.content %> </p>
 
         <%= link_to 'Retweet', retweet_tweet_path(t.id), data: {confirm: '¿Seguro que desea retweetear?', method: :post}, class: "btn btn-dark" %>
