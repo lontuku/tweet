@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
     
   }
-  resources :users, :only => [:show] do
+  resources :users, :only => [:show, :destroy] do
     resources :follows
   end
 

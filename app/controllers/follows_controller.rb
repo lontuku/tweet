@@ -10,7 +10,8 @@ class FollowsController < ApplicationController
     # else
       @user.follows.create(user_id: @user.id, follow_id: @followed.id)
     # end
-    redirect_to root_path
+    #redirect_to root_path
+    redirect_to user_path(@followed.tweets.last.id)
   end
 
 
@@ -21,7 +22,8 @@ class FollowsController < ApplicationController
     # else
       Follow.all.where(user_id: current_user.id, follow_id: @followed.id).destroy_all
     # end
-    redirect_to root_path
+    #redirect_to root_path
+    redirect_to user_path(@followed.tweets.last.id)
   end
 
   private

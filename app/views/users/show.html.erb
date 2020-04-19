@@ -7,7 +7,7 @@
   <a><%= @user.likes.count %> <%= (@user.likes.count) == 1 ? 'Like' : 'Likes'%>, </a>
   
 </p>
-
+<p>Lo siguen: <%= @followers.count %></p>
 <% if user_signed_in? %>
   <%if @user != current_user %>
       <%if @relaciones.where(user_id: current_user.id, follow_id: @user.id).exists? %>

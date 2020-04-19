@@ -3,7 +3,14 @@ class TweetsController < ApplicationController
   
   def index
     @tweet = Tweet.new
-    @tweets =  Tweet.order(:id).page params[:page]
+    @tweets = Tweet.order('created_at DESC').page(params[:page]).per(50)
+
+    if params[:content].present?
+      @tweets = Tweet.where('content LIKE ?', "%#{params[:content]}%" )
+      @tweets = @tweets.order('created_at DESC').page(params[:page]).per(50)
+    
+    end
+    #@tweets =  Tweet.order(:id).page params[:page]
     
     # @user_followed = Follow.where(user_id: current_user.id).pluck :follow_id
     # @tweets = []

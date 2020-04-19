@@ -10,6 +10,11 @@ class UsersController < ApplicationController
         @followers = Follow.where(follow_id: id)
     end
 
+    def destroy
+        sign_out current_user 
+        redirect_to root_path, alert: 'Adios!'
+    end
+    
     
     private
     def user_params
