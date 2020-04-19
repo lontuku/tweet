@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :follows
   end
 
-  #get '/tweets/hashtags/:name', to: "tweets#hashtags" 
+  get '/tweets/hashtags/:name', to: "tweets#hashtags" 
 
   root 'tweets#index'
 end
