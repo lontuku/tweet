@@ -1,5 +1,7 @@
-<h1>Perfil de <%= @user %></h1>
+<h1>Perfil de <%= @user.name %></h1>
+ <% if !@user.photo.blank? %>%
 <p><%= image_tag(@user.photo, size: "100x100")%></p>
+<% end %>
 <p>
   <a><%= @user.tweets.count %> <%= (@user.tweets.count) == 1 ? 'Tweet' : 'Tweets'%>, </a>
   <a><%= @user.likes.count %> <%= (@user.likes.count) == 1 ? 'Like' : 'Likes'%>, </a>

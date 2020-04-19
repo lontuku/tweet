@@ -4,7 +4,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :likes
-  has_many :tweets, through: :likes
-  has_many :follows
+  has_many :likes, :dependent => :destroy
+  has_many :tweets, :dependent => :destroy
+  has_many :follows, :dependent => :destroy
+#through: :likes, 
 end

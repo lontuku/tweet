@@ -2,8 +2,18 @@ class TweetsController < ApplicationController
   before_action :authenticate_user!, except: [:index] 
   
   def index
-    @tweets =  Tweet.order(:id).page params[:page]
     @tweet = Tweet.new
+    @tweets =  Tweet.order(:id).page params[:page]
+    
+    # @user_followed = Follow.where(user_id: current_user.id).pluck :follow_id
+    # @tweets = []
+    # @user_followed.each do |f|
+    #   f.tweets.each do |t|
+    #   @tweets << t
+    # end
+
+    # end
+    # @tweets
     #@user = current_user
     #User.find(params[:user_id]).id
   end
@@ -37,6 +47,11 @@ class TweetsController < ApplicationController
   def show
     @tweet = Tweet.find(params[:id])
     @user_likes = Like.all.where(tweet_id: @tweet).pluck('user_id')
+  end
+
+  def hashtags
+    tag = Tag.find_by(name: params[:name])
+    @tweets = tag.tweets
   end
 
   private

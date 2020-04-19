@@ -1,6 +1,6 @@
 class FollowsController < ApplicationController
-  
     before_action :find_followed
+    skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
 
 
   def create

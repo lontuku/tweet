@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :tweets do
     member do
       post 'retweet'
@@ -15,6 +17,9 @@ Rails.application.routes.draw do
   resources :users, :only => [:show] do
     resources :follows
   end
+
+  get '/tweets/hashtags/:name', to: "tweets#hashtags" 
+
   root 'tweets#index'
 end
 

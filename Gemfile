@@ -12,6 +12,8 @@ gem 'devise'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'kaminari'
+gem 'activeadmin'
+gem 'faker'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
