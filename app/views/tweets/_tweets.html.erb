@@ -8,7 +8,7 @@
         <% if t.user.photo.length > 40   %>
           <img src="<%= t.user.photo  %>" alt="avatar" class="card-img" >
         <% else %>
-          <%= image_tag(t.user.photo, size: "250x300") %>
+          <%= image_tag(t.user.photo, style: "width: 250px; height:300px; object-fit:cover;") %>
           <% end %>
         <% end %>
         </div>
