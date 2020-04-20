@@ -1,4 +1,4 @@
-<% @tweets.each do |t|  %>
+<% @tweets.reverse_each do |t|  %>
 <div class="container">
 <div class= "card bg-light mb-3 mx-auto" style="width: 48rem;" >
     <div class="row no-gutters">
@@ -11,7 +11,7 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">Tweet por <%=t.user.name %></h5> 
-        <p class="card-text"> <%= t.content %> </p>
+        <p class="card-text"> <%= render_with_hashtag(t.content) %> </p>
         <%= link_to 'Retweet', retweet_tweet_path(t.id), data: {confirm: '¿Seguro que desea retweetear?', method: :post}, class: "btn btn-dark" %>
         
         <% if t.retweets == 0 %>

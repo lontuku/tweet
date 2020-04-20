@@ -8,7 +8,6 @@ class TweetsController < ApplicationController
     if params[:content].present?
       @tweets = Tweet.where('content LIKE ?', "%#{params[:content]}%" )
       @tweets = @tweets.order('created_at DESC').page(params[:page]).per(50)
-    
     end
     #@tweets =  Tweet.order(:id).page params[:page]
     

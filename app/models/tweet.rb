@@ -3,8 +3,8 @@ class Tweet < ApplicationRecord
     has_many :users, through: :likes
     validates :content, presence: true
     belongs_to :user
-    has_and_belongs_to_many :tags 
-    
+    has_and_belongs_to_many :tags
+
 scope :created_between, lambda {|start_date, end_date| where("created_at >= ? AND created_at <= ?", start_date, end_date )}
 #scope :tweets_for_me, ->  {includes(:current_user).where("user_id LIKE ?")}
   after_create do
@@ -29,5 +29,17 @@ scope :created_between, lambda {|start_date, end_date| where("created_at >= ? AN
       end 
     end
   end
+
+  # def nuevo_hashtag
+  #   if self.content.scan(/#\w+/) != nil
+  #     hashtag_content = self.content.scan(/#\w+/)
+  #   end
+    
+  #   replace = hashtag_content.join("")
+  #   link = '"/?content=replace"'
+  #   content[replace] = "<a href=#{link}></a>".html_safe
+  #   return content
+  
+  # end
   
 end
