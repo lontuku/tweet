@@ -1,6 +1,8 @@
 <div class="container">
 <%= form_with(model: @tweet, local: true) do |f| %>
-<h1 class= "display-4">Que te gustaría compartir hoy <%= current_user.name %>?</h1>
+<h1 class= "display-4">Que te gustaría compartir hoy 
+<% if current_user !=nil %>
+    <%= current_user.name %> <% end %>?</h1>
 <div class= "form-group"><%= f.text_field :content, class: 'form-control' %></div>
 
 <div class= "form-group"> <%= f.submit :Twittear, class: 'btn btn-outline-dark' %> </div>
