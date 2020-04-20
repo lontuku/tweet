@@ -1,5 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-  <a class="navbar-brand" href="/pages/index">TWITTER</a>
+  
+  <%= link_to 'TWITTER', root_path, class:"navbar-brand" %>
+  <% if current_user != nil %>
+    <li class= "navbar-brand">¡Bienvenido <%= current_user.name %>!</li>
+  <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,11 +11,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/pages/index">Home
+      <% if current_user == nil %>
+        <%= link_to 'Home', root_path, class:"nav-link" %>
           <span class="sr-only">(current)</span></a>
       </li>
+      <% end %>
       <% if signed_in? %>
-        <%= link_to "Salir", destroy_user_session_path, method: :delete, class:"nav-link" %>
+      <div class="btn-group mr-2" role="group" aria-label="First group">
+      <%= link_to "Editar Perfil", edit_user_registration_path, class:"btn btn-secondary", type:"button" %>
+      <%= link_to "Salir", destroy_user_session_path, method: :delete, class:"btn btn-info", type:"button" %>
+       </div> 
       <% else %>
         <li class="nav-item">
           <%= link_to "Registrarse", new_user_registration_path, class:"nav-link"%>
@@ -20,10 +29,14 @@
           <%= link_to "Ingresar", new_user_session_path, class:"nav-link"%>
         </li>
       <% end %>
+      <div class="btn-group" role="group" aria-label="Basic example">
+  
     </ul>
+    
+</div>
     <form class="form-inline">
           <input class="form-control mr-sm-2" type="search" placeholder="Ingresa un texto" aria-label="search" name="content">
-          <button class="btn my-2 my-sm-0 type="submit">Buscar</button>
+          <button class="btn btn-dark my-2 my-sm-0 type="submit">Buscar</button>
         </form>
   </div>
 </nav>
