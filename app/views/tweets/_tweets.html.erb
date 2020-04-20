@@ -5,10 +5,13 @@
     <div class="row no-gutters">
         <div class="col-md-4">
         <%= link_to user_path(t) do %>
-        <img src="<%= t.user.photo  %>" alt="avatar" class="card-img" >
-        </div>
+        <% if t.user.photo != "tatan.jpg"  %>
+          <img src="<%= t.user.photo  %>" alt="avatar" class="card-img" >
+        <% else %>
+          <%= image_tag('tatan.jpg', size: "250x300") %>
+          <% end %>
         <% end %>
-        
+        </div>
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">Tweet por <%=t.user.name %></h5> 
