@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!, except: [:index] 
-  
+  require 'uri'
   def index
     @tweet = Tweet.new
     @tweets = Tweet.order('created_at DESC').page(params[:page]).per(50)
@@ -42,9 +42,9 @@ class TweetsController < ApplicationController
     @tweet.user = current_user
     respond_to do |f|
       if @tweet.save
-        f.html {redirect_to root_path, notice: 'El Tweet ha sido creado.'}
+        f.html {redirect_to todos_path, notice: 'El Tweet ha sido creado.'}
       else
-        f.html {redirect_to root_path, notice: 'El Tweet no pudo ser guardado.'}
+        f.html {redirect_to todos_path, notice: 'El Tweet no pudo ser guardado.'}
       end 
     end
   end
