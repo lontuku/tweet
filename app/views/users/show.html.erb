@@ -1,21 +1,25 @@
-<h1>Perfil de <%= @user.name %></h1>
- <% if !@user.photo.blank? %>%
-<p><%= image_tag(@user.photo, size: "100x100")%></p>
+
+<div class= container>
+<h1 class="display-4">Perfil de <%= @user.name %></h1>
+<% if !@user.photo.blank? %>
+<%= image_tag(@user.photo, style: "width: 250px; height:300px; object-fit:cover;") %>
+<% else %>
+<h1 class="display4 text-left">Sin Avatar </h1>
 <% end %>
 <p>
   <a><%= @user.tweets.count %> <%= (@user.tweets.count) == 1 ? 'Tweet' : 'Tweets'%>, </a>
   <a><%= @user.likes.count %> <%= (@user.likes.count) == 1 ? 'Like' : 'Likes'%>, </a>
-  
 </p>
 <p>Lo siguen: <%= @followers.count %></p>
 <% if user_signed_in? %>
   <%if @user != current_user %>
       <%if @relaciones.where(user_id: current_user.id, follow_id: @user.id).exists? %>
-          <%= button_to 'No Seguir', user_follow_path(@user, @follows), method: :delete %>
+          <%= button_to 'Dejar de seguir', user_follow_path(@user, @follows), method: :delete, class:"btn btn-dark" %>
       <% else %>
-          <%= button_to 'Seguir', user_follows_path(@user), method: :user %>
+          <%= button_to 'Seguir', user_follows_path(@user), method: :user, class:"btn btn-success" %>
       <% end %>
   <% end %>
 <% end %>
 <br>
-<%= link_to 'Back', tweets_path %>
+<%= link_to 'Back', root_path, class:"btn btn-info" %>
+</div>

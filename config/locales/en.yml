@@ -34,10 +34,10 @@
 en:
   views:
     pagination:
-      first: "&laquo; First"
-      last: "Última &raquo;"
-      previous: "&lsaquo; Prev"
-      next: "Next &rsaquo;"
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo; Volver Atrás"
+      next: "mostrar mas tweets"
       truncate: "&hellip;"
   helpers:
     page_entries_info:

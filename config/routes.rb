@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   get '/tweets/hashtags/:name', to: "tweets#hashtags" 
+  get '/todos', to: 'tweets#todos'
 
   root 'tweets#index'
   post 'api/news', to: 'api#news'

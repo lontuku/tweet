@@ -25,6 +25,18 @@ class TweetsController < ApplicationController
     #User.find(params[:user_id]).id
   end
 
+  def todos
+    @tweet = Tweet.new
+    @tweets = Tweet.order('created_at DESC').page(params[:page]).per(50)
+
+    if params[:content].present?
+      item = params[:content]
+      @tweets = Tweet.where('content LIKE ?', "%#{item}%" )
+      @tweets = @tweets.order('created_at DESC').page(params[:page]).per(50)
+    end
+
+  end
+
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
@@ -59,6 +71,10 @@ class TweetsController < ApplicationController
   def hashtags
     tag = Tag.find_by(name: params[:name])
     @tweets = tag.tweets
+  end
+
+  def usercontacts
+    @vieja = Tweet.all
   end
 
   private

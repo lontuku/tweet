@@ -1,5 +1,16 @@
+<% if current_user != nil %>
+    <% tweet_usuarios = [] %>
+    <%  arr = current_user.follows.pluck :follow_id %>
+    <% arr.each do |f|%>
+        <% tweet_usuarios << Tweet.where(user_id: f ) %>
+    <% end %>
+<% end %>
 
-<% @tweets.each do |t|  %>
+<% tweet_usuarios.each do |obj| %>
+<% los_tweets = obj.order('created_at DESC') %>
+
+
+<% los_tweets.reverse_each do |t|  %>
 <div class="container">
 <div class= "card bg-light mb-3 mx-auto" style="width: 48rem;" >
     <div class="row no-gutters">
@@ -14,7 +25,6 @@
         </div>
     <div class="col-md-8">
       <div class="card-body">
-       
         <h5 class="card-title">Tweet por 
          <%= link_to user_path(t) do %>
         <%=t.user.name %></h5> 
@@ -50,4 +60,12 @@
 </div>
 </div>
 
+
+<%  end %>
+<% end %>
+<% arr = current_user.follows.pluck :follow_id %>
+<% if  arr.length == 0 %>
+    <div class="container">
+        <h1 class="display-4 text-center text-info"> Aún no sigues a ningún usuario.</h1>
+    </div>
 <% end %>

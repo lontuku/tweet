@@ -1,0 +1,13 @@
+<div class="container">
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+<%= link_to 'TODOS', todos_path, class: "btn btn-dark" %>
+<%= link_to 'SEGUIDOS', root_path, class: "btn btn-info" %>
+
+</div>
+</div>
+    <%= render 'selectbar' %>
+    <%= render 'form' %>
+    <%= render 'tweets' %>
+<div class="container">
+    <%= paginate @tweets %>
+</div>
