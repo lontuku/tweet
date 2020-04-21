@@ -4,7 +4,7 @@
     <div class="row no-gutters">
         <div class="col-md-4">
         <%= link_to user_path(t) do %>
-        <% if @user.photo  != nil %>
+        <% if t.user.photo  != nil %>
           <img src="<%= t.user.photo  %>" alt="avatar" class="card-img">
         <% end %>
         <% end %>
