@@ -10,9 +10,17 @@
     <%= render 'form' %>
     <%= render 'usercontacts' %>
 <% else %>
-    <%= render 'form' %>
-    <%= render 'tweets' %>
 <div class="container">
-    <%= paginate @tweets %>
+    <h1 class="display-4">Regístrate para poder compartir</h1>
+    <form>
+    <div class="form-group">
+    <input class="form-control" placeholder="¡REGÍSTRATE AHORA (: !">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-dark" disabled>Twittear</button>
+    </div>
+    </form>
 </div>
+    <%= render 'tweets' %>
+
 <% end %>
