@@ -20,7 +20,7 @@
         <%=t.user.name %></h5> 
         <% end %>
         <p class="card-text display-6"> <%= render_with_hashtag(t.content) %> </p>
-        <%= link_to 'Retweet', retweet_tweet_path(t.id), data: {confirm: '¿Seguro que desea retweetear?', method: :post}, class: "btn btn-dark" %>
+        <%= button_to 'Retweet', retweet_tweet_path(t.id), data: {confirm: '¿Seguro que desea retweetear?', method: :post}, class: "btn btn-dark" %>
         
         <% if t.retweets == 0 %>
            <p> <b> </b></p>
