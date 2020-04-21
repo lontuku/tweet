@@ -2,7 +2,7 @@
 <div class= container>
 <h1 class="display-4">Perfil de <%= @user.name %></h1>
 <% if @user.photo  != nil %>
-<img src="<%= @user.photo  %>" alt="avatar" class="card-img">
+<img src="<%= @user.photo  %>" alt="avatar" style="width: 250px; height:300px; object-fit:cover;">
 <% else %>
 <h1 class="display4 text-left">Sin Avatar </h1>
 <% end %>
