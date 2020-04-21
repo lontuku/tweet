@@ -5,10 +5,8 @@
     <div class="row no-gutters">
         <div class="col-md-4">
         <%= link_to user_path(t) do %>
-        <% if t.user.photo  =~ URI::regexp   %>
-          <img src="<%= t.user.photo  %>" alt="avatar" class="card-img" >
-        <% else %>
-          <%= image_tag(t.user.photo, style: "width: 250px; height:300px; object-fit:cover;") %>
+        <% if t.user.photo  != nil  %>
+          <img src="<%= t.user.photo  %>" alt="avatar" class="card-img">
           <% end %>
         <% end %>
         </div>
